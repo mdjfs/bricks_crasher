@@ -1,10 +1,51 @@
-var marco = document.getElementById('marco');
-var estilo_de_marco = marco.getContext('2d');
-estilo_de_marco.shadowOffsetX=-10;
-estilo_de_marco.shadowOffsetY=5;
-estilo_de_marco.shadowBlur=5;
-estilo_de_marco.shadowColor="rgba(0, 0, 255, 0.5)";
-estilo_de_marco.shadowOffsetX=5;
+
+var juego = document.getElementById('juego');
+var estilo_de_marco = juego.getContext('2d');
+var brick = juego.getContext('2d');
+var x=650 ,y=650;
+brick.fillStyle = "#000000";
+brick.fillRect(x, y, 100, 20);
+
+var eventoControlado = false;
+
+window.onload = function() { 
+
+document.onkeydown = mostrarInformacionTecla; }
+
+
+function mostrarInformacionTecla(evObject) {
+
+
+                var teclaPulsada = evObject.which;
+
+                if (teclaPulsada == 38) 
+                {
+                    brick.clearRect (x,y, 140,40);
+                    y-=5;
+                    brick.fillRect(x,y,100,20);
+                }
+                if (teclaPulsada == 37) 
+                {
+                    brick.clearRect (x,y, 140,40);
+                    x-=5;
+                    brick.fillRect(x,y,100,20);
+                }
+                if (teclaPulsada == 39) 
+                {
+                    brick.clearRect (x,y, 140,40);
+                    x+=5;
+                    brick.fillRect(x,y,100,20);
+                }
+                if (teclaPulsada == 40) 
+                {
+                    brick.clearRect (x,y, 140,40);
+                    y+=5;
+                    brick.fillRect(x,y,100,20);
+                }
+
+}
+
+
 estilo_de_marco.moveTo(80,10);
 estilo_de_marco.lineTo(1350,10);
 estilo_de_marco.strokeStyle = "#2866BB";
